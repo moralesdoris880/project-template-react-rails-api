@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
     wrap_parameters format: []
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
-    skip_before_action :authorized, only: :create
+    skip_before_action :authorized, only:  :create 
+    skip_before_action :authorized, only:  :index
+
+    def index
+        users = User.all
+        render json: users
+    end
 
     def show
         current_user = User.find_by(id:session[:user_id])

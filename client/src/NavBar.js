@@ -1,8 +1,8 @@
-import React, { useEffect, useState} from "react";
+import React, {} from "react";
 import {Link} from 'react-router-dom';
 
 
-function NavBar({ user, setUser }){
+function NavBar(){
 
     return (
         <div style={{display: 'flex'}}>

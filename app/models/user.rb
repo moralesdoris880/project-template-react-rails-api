@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
     
-    has many :drinks, through :restaurant
+    has_many :drinks, through: :restaurant
     has_many :comments
     has_many :ratings
 

@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {Link} from 'react-router-dom';
-import Error from "./Error";
+
 
 function Login(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
 
     function handleSubmit(e){
         e.preventDefault();
@@ -16,11 +15,10 @@ function Login(){
             },
             body: JSON.stringify({ username, password }),
           }).then((r) => {
-            setIsLoading(false);
             if (r.ok) {
-              r.json().then((user) => onLogin(user));
+              r.json().then(() => console.log('Success'));
             } else {
-              r.json().then((err) => setErrors(err.errors));
+              r.json().then(() => console.log('Failed'));
             }
           });
     }
@@ -37,9 +35,7 @@ function Login(){
                 <input type="submit" value="Login"></input>
             </form>
             <div>
-                {errors.map((err) => (
-                <Error key={err}>{err}</Error>
-                ))}
+
             </div>
         </div>
 
